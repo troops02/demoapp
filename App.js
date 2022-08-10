@@ -11,7 +11,7 @@ export default function App() {
   function TaxCalculator () {
     const profit = revenue - expenses;
     const cit = (20/100) * revenue;
-    const vat = (7.5/100) * porfit;
+    const vat = (7.5/100) * profit;
     const total = cit + vat;
 
     return (
@@ -37,7 +37,7 @@ export default function App() {
         <Text style={styles.heading}>Company Tax Calculator</Text>
       </View>
 
-      {status ? TaxCalculator() : null}
+      {status == true ? TaxCalculator() : null}
 
       <TextInput 
       style={styles.input} 

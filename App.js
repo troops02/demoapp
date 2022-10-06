@@ -1,7 +1,20 @@
 import {setStatusBarBackgroundColor, StatusBar} from 'expo-status-bar';
 import { useState } from 'react';
-import { View, Text, StyleSheet, Button, TextInput, Image } from 'react-native' ;
+import { View, Text, StyleSheet, Button, TextInput, Image, Alert } from 'react-native' ;
+import styled from 'styled-components/native';
+import { Button as Btn, TextInput as Input, Card } from 'style-components';
+import { Paragraph, Title } from 'react-native-paper';
 
+const ChatBox =styled.View`
+  position:absolute;
+  bottom:10px;
+  right:10px;
+  backgroung-color:black;
+  border-radius:50px;
+  padding:5px;
+  box-shadow: 5px 5px 8px black;
+`
+//medic
 export default function App() {
   const [revenue,setRevenue] = useState(0);
   const [expenses,setExpenses] = useState(0);
@@ -22,12 +35,28 @@ export default function App() {
         <Text style={styles.summaryLine}>CIT Tax : {cit}</Text>
         <Text style={styles.summaryLine}>VAT Tax : {vat}</Text>
         <Text style={styles.summaryLine}>Total Tax to Pay :{total}</Text>
+
+        {/* <BtnBox>
+          <Card>
+            <Card.Cover source={{uri:'https://images.pexels.com/photos/590041/pexels-photo-590041.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'}}/>
+            <Card.Content>
+              <Title>HIRE A LINCENCE AUDITOR</Title>
+              <Paragraph></Paragraph>
+              <Btn mode='contained' color='oldplace'>Learn more</Btn>
+            </Card.Content>
+          </Card>
+
+
+          <Text styled={{textALign:'center',fontSize:24,marginBottom:10}}>Send report to your email</Text>
+          <Input label='email address' style={{marginBottom:10}}/>
+          <Btn mode='contained' color='purple'>SEND </Btn>
+        </BtnBox> */}
       </View>
     )
   }
 
   
-  return (
+   return (
     <View styles={styles.container}>
       <View style={styles.logoWrapper}>
         <Image 
@@ -49,15 +78,24 @@ export default function App() {
       placeholder='Total expense'
       onChangeText={(expenseInput) => setExpenses(expenseInput)}
       />
+
       
       <Button title='CALCULATE TAX' onPress={() =>{
         TaxCalculator;
         setStatus(true);
       }}/>
+
+      
+      <ChatBox onCliick={() =>{
+        alert('Welcome to WhatsApp')
+      }}>
+        <Image style={styles.chat} source={require('./assets/images/whatsApp.png')}/>
+      </ChatBox>
       <StatusBar style='auto'/>
     </View>
   )
-}
+    }
+
 
 const styles = StyleSheet.create({
   container:{
@@ -95,5 +133,9 @@ const styles = StyleSheet.create({
     width:80,
     height:80,
     borderRadius:50,
+  },
+  chat:{
+    width:60,
+    height:60,
   },
 })
